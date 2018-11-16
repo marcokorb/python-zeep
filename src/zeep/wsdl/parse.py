@@ -148,7 +148,7 @@ def parse_port_type(wsdl, xmlelement):
     operations = {}
     for elm in xmlelement.findall('wsdl:operation', namespaces=NSMAP):
         operation = parse_abstract_operation(wsdl, elm)
-        if operation:
+        if operation and operation.name not in operations:
             operations[operation.name] = operation
     return definitions.PortType(name, operations)
 

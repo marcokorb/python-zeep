@@ -132,7 +132,8 @@ class Binding(object):
 
     def _operation_add(self, operation):
         # XXX: operation name is not unique
-        self._operations[operation.name] = operation
+        if operation.name not in self._operations:
+            self._operations[operation.name] = operation
 
     def __str__(self):
         return '%s: %s' % (self.__class__.__name__, self.name.text)
