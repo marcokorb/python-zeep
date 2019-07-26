@@ -46,6 +46,7 @@ class Settings(object):
     # transport
     force_https = attr.ib(default=True)
     extra_http_headers = attr.ib(default=None)
+    resolve_duplicated = attr.ib(default=None)
 
     # lxml processing
     xml_huge_tree = attr.ib(default=False)

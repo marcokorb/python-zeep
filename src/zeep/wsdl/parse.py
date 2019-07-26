@@ -151,9 +151,25 @@ def parse_port_type(wsdl, xmlelement):
     operations = {}
     for elm in xmlelement.findall("wsdl:operation", namespaces=NSMAP):
         operation = parse_abstract_operation(wsdl, elm)
+        resolve_duplicated = wsdl.wsdl.settings.resolve_duplicated
+
+        if resolve_duplicated is not None and operation.name in resolve_duplicated:
+            action_name = resolve_duplicated.get(operation.name)
+            input_message = operation.input_message.name.localname
+
+            if 'SoapIn' in input_message:
+                action_message = '{}SoapIn'.format(action_name)
+            else:
+                action_message = '{}HttpGetIn'.format(action_name)
+
+            if action_message != input_message:
+                continue
+
         if operation and operation.name not in operations:
             operations[operation.name] = operation
+
     return definitions.PortType(name, operations)
+
 
 
 def parse_port(wsdl, xmlelement):

@@ -139,8 +139,24 @@ class Binding(object):
 
     def _operation_add(self, operation):
         # XXX: operation name is not unique
-        if operation.name not in self._operations:
-            self._operations[operation.name] = operation
+        operation_name = operation.name
+        resolve_duplicated = self.wsdl.settings.resolve_duplicated
+
+        if resolve_duplicated is not None \
+            and operation_name in resolve_duplicated:
+
+            action_name = resolve_duplicated.get(operation_name)
+
+            if hasattr(operation, 'soapaction') \
+                and not operation.soapaction.endswith(action_name):
+                return None
+
+            elif hasattr(operation, 'location') \
+                and not operation.location.endswith(action_name):
+                return None
+
+        if operation_name not in self._operations:
+            self._operations[operation_name] = operation
 
     def __str__(self):
         return "%s: %s" % (self.__class__.__name__, self.name.text)
