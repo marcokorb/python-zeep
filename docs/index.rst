@@ -5,7 +5,7 @@ Zeep: Python SOAP client
 A fast and modern Python SOAP client
 
 Highlights:
- * Compatible with Python 2.7, 3.3, 3.4, 3.5, 3.6 and PyPy
+ * Compatible with Python 2.7, 3.3, 3.4, 3.5, 3.6, 3.7 and PyPy
  * Build on top of lxml and requests
  * Support for Soap 1.1, Soap 1.2 and HTTP bindings
  * Support for WS-Addressing headers
@@ -73,14 +73,14 @@ If you have installed pip then run::
 
 This assumes that there are wheel files available for the latest lxml release.
 If that is not the case (https://pypi.python.org/pypi/lxml/) then first
-install lxml 3.7.3 since that release should have the wheel files for all
+install lxml 4.2.5 since that release should have the wheel files for all
 platforms::
 
-    pip install lxml==3.7.3 zeep
+    pip install lxml==4.2.5 zeep
 
 
 When you want to use wsse.Signature() you will need to install the python
-xmlsec module. This can be done by install the ``xlmsec`` extras::
+xmlsec module. This can be done by installing the ``xmlsec`` extras::
 
     pip install zeep[xmlsec]
 
@@ -110,7 +110,7 @@ See ``python -mzeep --help`` for more information about this command.
 
 .. note:: Zeep follows `semver`_ for versioning, however bugs can always occur.
           So as always pin the version of zeep you tested with
-          (e.g. ``zeep==3.1.0``').
+          (e.g. ``zeep==3.4.0``').
 
 
 .. _semver: http://semver.org/
@@ -181,18 +181,3 @@ Changelog
    :maxdepth: 2
 
    changes
-
-
-Support
-=======
-
-If you encounter bugs then please `let me know`_ . Please see :doc:`reporting_bugs`
-for information how to best report them.
-
-I'm also able to offer commercial support.  As in contracting work. Please
-contact me at info@mvantellingen.nl for more information. If you just have a
-random question and don't intent to actually pay me for my support then please
-DO NOT email me at that e-mail address but just use stackoverflow or something..
-
-
-.. _let me know: https://github.com/mvantellingen/python-zeep/issues

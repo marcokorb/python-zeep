@@ -1,3 +1,38 @@
+3.4.0 (2019-06-05)
+------------------
+ - Allow passing xsd.Nil to sequences (#959, smilingDima)
+ - Add support for passing custom digest and signature methods during WSSE
+   signing (#957, Florian Apolloner)
+ - Fix path resolving during XSD imports (#962, adambogocz)
+
+
+3.3.1 (2019-03-10)
+------------------
+ - Fix issue with empty xsd:import statements on Python 2.7 (#930)
+
+
+3.3.0 (2019-03-08)
+------------------
+ - Extend the force_https flag to also force loading xsd files from https when
+   a http url is encountered from a https domain
+ - Fix handling recursive xsd imports when the url's are enforced from http to
+   https.
+ - Fix reference attribute when using the Binary Security Token (#873, tpazderka)
+ - Add support for the WSAM namespace (#890, David Adam)
+
+
+3.2.0 (2018-12-17)
+------------------
+ - Fix abstract message check for NoneType before attempting to access parts
+ - Improve support for 'Chameleon' XSD schemas (#879, #888)
+ - Fix resolving qualified references (#879)
+ - Fix issue with duplicate soap:body tags when multiple parts used (#879)
+ - Fix Choice with unbound Any element (#871)
+ - Add xsd_ignore_sequence_order flag (#880)
+ - Add support for timestamp token in WSS headers (#817)
+ - Accept strings for xsd.DateTime (#886)
+
+
 3.1.0 (2018-07-28)
 ------------------
  - Fix SSL issue on with `TornadoAsyncTransport` (#792)
