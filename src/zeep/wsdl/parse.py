@@ -159,8 +159,12 @@ def parse_port_type(wsdl, xmlelement):
 
             if 'SoapIn' in input_message:
                 action_message = '{}SoapIn'.format(action_name)
-            else:
+            elif 'HttpGetIn' in input_message:
                 action_message = '{}HttpGetIn'.format(action_name)
+            elif 'HttpPostIn' in input_message:
+                action_message = '{}HttpPostIn'.format(action_name)
+            else:
+                continue
 
             if action_message != input_message:
                 continue
@@ -169,7 +173,6 @@ def parse_port_type(wsdl, xmlelement):
             operations[operation.name] = operation
 
     return definitions.PortType(name, operations)
-
 
 
 def parse_port(wsdl, xmlelement):
